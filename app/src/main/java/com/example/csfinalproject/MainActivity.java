@@ -17,16 +17,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        final EditText editText = findViewById(R.id.editText1);
+//        final EditText editText = findViewById(R.id.);
 //        editText.setOnClickListener(v -> {
 //            editText.setText("");
 //        });
+
+        findViewById(R.id.clear).setOnClickListener(v -> {
+
+        });
 
         final Button getContactButton = findViewById(R.id.getContact);
         final ListView contactList = findViewById(R.id.ContactList);
         getContactButton.setOnClickListener(v -> {
             getContact(contactList);
         });
+
 
 
 

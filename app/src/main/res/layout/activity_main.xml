@@ -50,14 +50,13 @@
             android:layout_height="52dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="456dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:text="Include Location"
+            app:layout_constraintBottom_toTopOf="@+id/send"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/send"
@@ -115,18 +114,28 @@
             app:layout_constraintStart_toEndOf="@+id/email"
             app:layout_constraintTop_toBottomOf="@+id/getContact" />
 
-        <EditText
-            android:id="@+id/text"
-            android:layout_width="307dp"
-            android:layout_height="120dp"
-            android:layout_marginStart="52dp"
-            android:layout_marginLeft="52dp"
-            android:layout_marginTop="204dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Enter Message"
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/message"
+            android:layout_width="match_parent"
+            android:layout_height="156dp"
+            android:hint="Enter Message"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="318dp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/message_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/getContact" />
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        </android.support.design.widget.TextInputLayout>
 
     </android.support.constraint.ConstraintLayout>
 

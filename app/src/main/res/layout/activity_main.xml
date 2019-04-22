@@ -37,13 +37,14 @@
             android:layout_height="52dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="456dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:text="Include Location"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="457dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/send"
@@ -90,30 +91,29 @@
             android:id="@+id/textView"
             android:layout_width="176dp"
             android:layout_height="42dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="144dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:gravity="center_horizontal"
             android:text="Input Message"
             android:textColor="@android:color/black"
             android:textSize="24sp"
             app:fontFamily="casual"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.894"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/email"
             app:layout_constraintTop_toBottomOf="@+id/getContact" />
 
         <EditText
             android:id="@+id/text"
             android:layout_width="307dp"
             android:layout_height="120dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="204dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Enter Message"
-            tools:layout_editor_absoluteX="52dp"
-            tools:layout_editor_absoluteY="317dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/getContact" />
 
     </android.support.constraint.ConstraintLayout>
 

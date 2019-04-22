@@ -5,8 +5,11 @@ import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,30 +23,29 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         final Button getContactButton = findViewById(R.id.getContact);
+        final ListView contactList = findViewById(R.id.ContactList);
         getContactButton.setOnClickListener(v -> {
-            Cursor contacts = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
-            String aNameFromContacts[] = new String[contacts.getCount()];
-            String aNumberFromContacts[] = new String[contacts.getCount()];
-            int i = 0;
-
-            int nameFieldColumnIndex = contacts.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME);
-            int numberFieldColumnIndex = contacts.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
-
-            while(contacts.moveToNext()) {
-
-                String contactName = contacts.getString(nameFieldColumnIndex);
-                aNameFromContacts[i] =    contactName ;
-
-                String number = contacts.getString(numberFieldColumnIndex);
-                aNumberFromContacts[i] =    number ;
-                i++;
-            }
-
-            contacts.close();
+            getContact(contactList);
         });
 
 
 
 //       smsManager.sendTextMessage("6508682328", null, "sms message", null, null);
+    }
+
+    public void getContact(View v) {
+        final ListView contactList = findViewById(R.id.ContactList);
+        Cursor c = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null, null, null, null);
+        startManagingCursor(c);
+
+        String[] from = {ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER,
+        ContactsContract.CommonDataKinds.Phone._ID};
+
+        int[] to = {android.R.id.text1, android.R.id.text2};
+
+        SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, c, from, to);
+        contactList.setAdapter(simpleCursorAdapter);
+        contactList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
     }
 }

@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        SmsManager smsManager = SmsManager.getDefault();
-//        smsManager.sendTextMessage("6508682328", null, "sms message", null, null);
+//       smsManager.sendTextMessage("6508682328", null, "sms message", null, null);
     }
 }

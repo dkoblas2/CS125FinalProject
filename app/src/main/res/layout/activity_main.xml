@@ -26,7 +26,7 @@
             app:layout_constraintTop_toBottomOf="@+id/getContact" />
 
         <TextView
-            android:id="@+id/email"
+            android:id="@+id/contact"
             android:layout_width="176dp"
             android:layout_height="42dp"
             android:layout_marginStart="8dp"
@@ -35,7 +35,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:gravity="center_horizontal"
-            android:text="Email"
+            android:text="Contact:"
             android:textColor="@android:color/black"
             android:textSize="24sp"
             app:fontFamily="casual"
@@ -50,13 +50,15 @@
             android:layout_height="52dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:text="Include Location"
             app:layout_constraintBottom_toTopOf="@+id/send"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message" />
 
         <Button
             android:id="@+id/send"
@@ -111,16 +113,23 @@
             android:textColor="@android:color/black"
             android:textSize="24sp"
             app:fontFamily="casual"
-            app:layout_constraintStart_toEndOf="@+id/email"
+            app:layout_constraintStart_toEndOf="@+id/contact"
             app:layout_constraintTop_toBottomOf="@+id/getContact" />
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/message"
             android:layout_width="match_parent"
             android:layout_height="156dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:hint="Enter Message"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="318dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ContactList" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/message_layout"

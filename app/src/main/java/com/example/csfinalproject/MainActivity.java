@@ -1,26 +1,24 @@
 package com.example.csfinalproject;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
-
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class MainActivity extends AppCompatActivity {
-
+    EditText no,msg;            //Added
+    Button sendSms;             //Added
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        final EditText editText = findViewById(R.id.);
+//        final EditText editText = findViewById(R.id.editText1);
 //        editText.setOnClickListener(v -> {
 //            editText.setText("");
 //        });
@@ -36,35 +34,45 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+//        findViewById(R.id.ContactList).setOnClickListener(new AdapterView.OnItemClickListener() {
+//
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position,
+//                                    long id) {
+//
+//
+//
+//                Cursor item = (Cursor) parent.getItemAtPosition(position);
+//                item.getString(position);
+//
+//                TextView contactName = findViewById(R.id.contact);
+//                contactName.setText(item.getString(position));
+//
+////                ListEntry entry= (ListEntry) parent.getAdapter().getItem(position);
+////                Intent intent = new Intent(MainActivity.this, SendMessage.class);
+////                String message = entry.getMessage();
+////                intent.putExtra(EXTRA_MESSAGE, message);
+////                startActivity(intent);
+//            }
+//        });
+        //no=(EditText)findViewById(R.id.num);   // ???
+        msg=(EditText)findViewById(R.id.message);
+        sendSms=(Button)findViewById(R.id.send);
+        sendSms.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg) {
+                sendMsg();
+            }
 
-        findViewById(R.id.ContactList).setOnClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,
-                                    long id) {
-
-
-
-                Cursor item = (Cursor) parent.getItemAtPosition(position);
-                item.getString(position);
-
-                TextView contactName = findViewById(R.id.contact);
-                contactName.setText(item.getString(position));
-
-//                ListEntry entry= (ListEntry) parent.getAdapter().getItem(position);
-//                Intent intent = new Intent(MainActivity.this, SendMessage.class);
-//                String message = entry.getMessage();
-//                intent.putExtra(EXTRA_MESSAGE, message);
-//                startActivity(intent);
+            private void sendMsg() {
+                String number=no.getText().toString();
+                String message=msg.getText().toString();
+                SmsManager manager=SmsManager.getDefault();
+                manager.sendTextMessage(number, null, message, null,null);
+                //Toast.makeText(getApplicationContext(),"send successfully". Toast.LENGTH LONG           //
             }
         });
 
-
-
-
-
-//       smsManager.sendTextMessage("6508682328", null, "sms message", null, null);
-    }
+}
 
     public void getContact(View v) {
         final ListView contactList = findViewById(R.id.ContactList);

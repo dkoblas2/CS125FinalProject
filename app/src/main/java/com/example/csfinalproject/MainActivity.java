@@ -21,13 +21,15 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements LocationListener {
     //Added
-    protected EditText phone, message;
+    protected EditText message;
     protected LocationManager locationManager;
     protected Double latitude, longitude;
     protected boolean includeLocation;
-    protected String contactInfo;
+    protected String contactName, contactNumber;
 
     //Ends
     @Override
@@ -38,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
         final TextView locationView = findViewById(R.id.locationView);
 
-        phone = findViewById(R.id.txtPhone);
         message = findViewById(R.id.txtMessage);
 
 
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         // make contact list
         final Button getContactButton = findViewById(R.id.getContact);
         final ListView contactList = findViewById(R.id.ContactList);
-        final TextView contactName = findViewById(R.id.contact);
+        final TextView displayName = findViewById(R.id.contact);
         getContactButton.setOnClickListener(v -> {
             getContact(contactList);
         });
@@ -80,18 +81,20 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Cursor cursor = ((Cursor) (parent.getItemAtPosition(position)));
-                cursor.moveToFirst();
-                contactInfo = cursor.getString(position);
-                contactName.setText("Contact: \n" + contactInfo);
-            }
 
+                contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+
+                contactNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+
+                displayName.setText("Contact: \n" + contactName);
+            }
         });
     }
 
     public void sendMessage() {
-        String number = phone.getText().toString().trim();
+        String number = contactNumber;
         String mess = message.getText().toString().trim();
-        if (number == null || number.equals("") || mess == null) {
+        if (number == null || number.equals("")) {
             Toast.makeText(this,"field can't be empty",Toast.LENGTH_LONG).show();
         } else {
             if (TextUtils.isDigitsOnly(number)) {
@@ -110,17 +113,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 Toast.makeText(this,"please enter integer only",Toast.LENGTH_LONG).show();
             }
         }
-
-        //Added
-
-//        final EditText editText = findViewById(R.id.editText1);
-//        editText.setOnClickListener(v -> {
-//            editText.setText("");
-//        });
-
-//        findViewById(R.id.clear).setOnClickListener(v -> {
-//
-//        });
     }
 
     public void getContact(View v) {

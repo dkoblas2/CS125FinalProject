@@ -16,8 +16,8 @@
         <ListView
             android:id="@+id/ContactList"
             android:layout_width="match_parent"
-            android:layout_height="127dp"
-            android:layout_marginTop="116dp"
+            android:layout_height="187dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -97,15 +97,14 @@
             android:layout_height="45dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="36dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="Get Contact"
-            app:layout_constraintBottom_toBottomOf="@+id/message_layout"
+            android:text="Get Contacts"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.509" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/num"
@@ -139,40 +138,20 @@
         </android.support.design.widget.TextInputLayout>
 
         <EditText
-            android:id="@+id/txtPhone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/txtMessage"
+            android:layout_width="323dp"
+            android:layout_height="98dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:hint="Enter phone no."
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/getContact"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/txtMessage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="Enter message here"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="@+id/message_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/getContact" />
+            app:layout_constraintTop_toBottomOf="@+id/ContactList" />
 
     </android.support.constraint.ConstraintLayout>
 

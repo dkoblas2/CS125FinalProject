@@ -13,7 +13,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -35,12 +34,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final Button sendB = (Button) findViewById(R.id.send);
+        final Button sendB = findViewById(R.id.send);
 
         final TextView locationView = findViewById(R.id.locationView);
 
-        phone = (EditText) findViewById(R.id.txtPhone);
-        message = (EditText) findViewById(R.id.txtMessage);
+        phone = findViewById(R.id.txtPhone);
+        message = findViewById(R.id.txtMessage);
 
 
         // creates listener for current location
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         });
 
         // location box + display
-        final CheckBox locationCheckBox = (CheckBox) findViewById(R.id.includeLocation);
+        final CheckBox locationCheckBox = findViewById(R.id.includeLocation);
         includeLocation = locationCheckBox.isChecked();
         locationCheckBox.setOnClickListener(v -> {
             locationView.setText("Latitude: " + latitude + "\n" + "Longitude: " + longitude);

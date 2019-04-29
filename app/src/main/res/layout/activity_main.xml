@@ -35,12 +35,19 @@
             android:gravity="center_horizontal"
             android:text="Contact:"
             android:textColor="@android:color/black"
-            android:textSize="24sp"
+            android:textSize="14sp"
             app:fontFamily="casual"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.022"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ContactList" />
+
+        <TextView
+            android:id="@+id/locationView"
+            android:layout_width="158dp"
+            android:layout_height="47dp"
+            tools:layout_editor_absoluteX="210dp"
+            tools:layout_editor_absoluteY="486dp" />
 
         <CheckBox
             android:id="@+id/includeLocation"
@@ -53,7 +60,7 @@
             android:text="Include Location"
             app:layout_constraintBottom_toTopOf="@+id/send"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintHorizontal_bias="0.132"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button

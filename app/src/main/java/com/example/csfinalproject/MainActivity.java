@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
         final TextView locationView = findViewById(R.id.locationView);
 
+        message = findViewById(R.id.txtMessage);
+
         findViewById(R.id.clear).setOnClickListener(v -> {
             ((TextView) findViewById(R.id.txtMessage)).setText("");
         });
@@ -101,33 +103,18 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         if (number == null || number.equals("")) {
             Toast.makeText(this,"field can't be empty",Toast.LENGTH_LONG).show();
         }
+        if (mess.length() == 0) {
+            mess = "Blank Message";
+        }
         if (includeLocation) {
             mess = "Current Location: \n" +
-//                    "Latitude: " + latitude  + "\n" +
-//                    "Longitude: " + longitude + "\n" +
                     "https://www.google.com/maps/place/" + latitude + "," + longitude + "\n" +
                     "Message: " + mess;
         }
 
-            SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage(number, null, mess, null, null);
-            Toast.makeText(this, "message sent successfully!", Toast.LENGTH_LONG).show();
-//            if (TextUtils.isDigitsOnly(number)) {
-//
-//                if (includeLocation) {
-//                    mess = "Current Location: \n" +
-//                            "Latitude: " + latitude +
-//                            "Longitude: " + longitude + "\n" +
-//                            "Message: " + mess;
-//                }
-//
-//                SmsManager smsManager = SmsManager.getDefault();
-//                smsManager.sendTextMessage(number, null, mess, null, null);
-//                Toast.makeText(this, "message sent successfully!", Toast.LENGTH_LONG).show();
-//            }
-//            else {
-//                Toast.makeText(this,"please enter integer only",Toast.LENGTH_LONG).show();
-//            }
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage(number, null, mess, null, null);
+        Toast.makeText(this, "message sent successfully!", Toast.LENGTH_LONG).show();
     }
 
     public void getContact(View v) {

@@ -12,6 +12,7 @@ import android.telephony.SmsManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     protected LocationManager locationManager;
     protected Double latitude, longitude;
     protected boolean includeLocation;
+    protected String contactInfo;
 
     //Ends
     @Override
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         phone = (EditText) findViewById(R.id.txtPhone);
         message = (EditText) findViewById(R.id.txtMessage);
 
+
+        // creates listener for current location
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         try {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
@@ -46,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             System.out.println("Location permission denied");
         }
 
+        // sends message
         sendB.setOnClickListener(v -> {
             sendMessage();
         });
@@ -63,10 +68,23 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             }
         });
 
+        // make contact list
         final Button getContactButton = findViewById(R.id.getContact);
         final ListView contactList = findViewById(R.id.ContactList);
+        final TextView contactName = findViewById(R.id.contact);
         getContactButton.setOnClickListener(v -> {
             getContact(contactList);
+        });
+
+        contactList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Cursor cursor = ((Cursor) (parent.getItemAtPosition(position)));
+                cursor.moveToFirst();
+                contactInfo = cursor.getString(0);
+                contactName.setText("Contact: \n" + contactInfo);
+            }
+
         });
     }
 
@@ -117,13 +135,13 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
         SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, c, from, to);
         contactList.setAdapter(simpleCursorAdapter);
-        contactList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        contactList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
     }
 
     @Override
     public void onLocationChanged(Location location) {
         latitude = location.getLatitude();
-        longitude = location.getLongitude()
+        longitude = location.getLongitude();
     }
 
     @Override

@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
         findViewById(R.id.clear).setOnClickListener(v -> {
             ((TextView) findViewById(R.id.txtMessage)).setText("");
+
         });
 
 

@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
         sendB.setOnClickListener(v -> {
             sendMessage();
-
-
         });
 
         // location box + display
@@ -75,10 +73,18 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     public void sendMessage() {
         String number = phone.getText().toString().trim();
         String mess = message.getText().toString().trim();
-        if (number == null || number.equals("") || mess == null || mess.equals("")) {
+        if (number == null || number.equals("") || mess == null) {
             Toast.makeText(this,"field can't be empty",Toast.LENGTH_LONG).show();
         } else {
             if (TextUtils.isDigitsOnly(number)) {
+
+                if (includeLocation) {
+                    mess = "Current Location: \n" +
+                            "Latitude: " + latitude +
+                            "Longitude: " + longitude + "\n" +
+                            "Message: " + mess;
+                }
+
                 SmsManager smsManager = SmsManager.getDefault();
                 smsManager.sendTextMessage(number, null, mess, null, null);
                 Toast.makeText(this, "message sent successfully!", Toast.LENGTH_LONG).show();

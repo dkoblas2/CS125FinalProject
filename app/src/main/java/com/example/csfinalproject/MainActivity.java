@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Cursor cursor = ((Cursor) (parent.getItemAtPosition(position)));
                 cursor.moveToFirst();
-                contactInfo = cursor.getString(0);
+                contactInfo = cursor.getString(position);
                 contactName.setText("Contact: \n" + contactInfo);
             }
 

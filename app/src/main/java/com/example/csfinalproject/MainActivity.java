@@ -40,7 +40,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
         final TextView locationView = findViewById(R.id.locationView);
 
-        message = findViewById(R.id.txtMessage);
+        findViewById(R.id.clear).setOnClickListener(v -> {
+            ((TextView) findViewById(R.id.txtMessage)).setText("");
+        });
+
 
 
         // creates listener for current location
@@ -60,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         final CheckBox locationCheckBox = findViewById(R.id.includeLocation);
         includeLocation = locationCheckBox.isChecked();
         locationCheckBox.setOnClickListener(v -> {
-            locationView.setText("Latitude: " + latitude + "\n" + "Longitude: " + longitude);
+            locationView.setText("Latitude: " + latitude + "\n" + "Longitude: " + longitude + "\n");
             includeLocation = locationCheckBox.isChecked();
             if (includeLocation) {
                 locationView.setVisibility(View.VISIBLE);
@@ -76,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         getContactButton.setOnClickListener(v -> {
             getContact(contactList);
         });
+
 
         contactList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -99,8 +103,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         }
         if (includeLocation) {
             mess = "Current Location: \n" +
-                    "Latitude: " + latitude +
-                    "Longitude: " + longitude + "\n" +
+//                    "Latitude: " + latitude  + "\n" +
+//                    "Longitude: " + longitude + "\n" +
+                    "https://www.google.com/maps/place/" + latitude + "," + longitude + "\n" +
                     "Message: " + mess;
         }
 

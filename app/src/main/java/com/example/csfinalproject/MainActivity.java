@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     //Ends
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("Find Me!");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final Button sendB = findViewById(R.id.send);

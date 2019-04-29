@@ -96,23 +96,33 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         String mess = message.getText().toString().trim();
         if (number == null || number.equals("")) {
             Toast.makeText(this,"field can't be empty",Toast.LENGTH_LONG).show();
-        } else {
-            if (TextUtils.isDigitsOnly(number)) {
-
-                if (includeLocation) {
-                    mess = "Current Location: \n" +
-                            "Latitude: " + latitude +
-                            "Longitude: " + longitude + "\n" +
-                            "Message: " + mess;
-                }
-
-                SmsManager smsManager = SmsManager.getDefault();
-                smsManager.sendTextMessage(number, null, mess, null, null);
-                Toast.makeText(this, "message sent successfully!", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(this,"please enter integer only",Toast.LENGTH_LONG).show();
-            }
         }
+        if (includeLocation) {
+            mess = "Current Location: \n" +
+                    "Latitude: " + latitude +
+                    "Longitude: " + longitude + "\n" +
+                    "Message: " + mess;
+        }
+
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(number, null, mess, null, null);
+            Toast.makeText(this, "message sent successfully!", Toast.LENGTH_LONG).show();
+//            if (TextUtils.isDigitsOnly(number)) {
+//
+//                if (includeLocation) {
+//                    mess = "Current Location: \n" +
+//                            "Latitude: " + latitude +
+//                            "Longitude: " + longitude + "\n" +
+//                            "Message: " + mess;
+//                }
+//
+//                SmsManager smsManager = SmsManager.getDefault();
+//                smsManager.sendTextMessage(number, null, mess, null, null);
+//                Toast.makeText(this, "message sent successfully!", Toast.LENGTH_LONG).show();
+//            }
+//            else {
+//                Toast.makeText(this,"please enter integer only",Toast.LENGTH_LONG).show();
+//            }
     }
 
     public void getContact(View v) {
